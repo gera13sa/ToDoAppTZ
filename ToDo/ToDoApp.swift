@@ -1,21 +1,14 @@
-//
-//  ToDoApp.swift
-//  ToDo
-//
-//  Created by Александр Герасимов on 03.07.2026.
-//
-
 import SwiftUI
-import CoreData
 
 @main
 struct ToDoApp: App {
-    let persistenceController = PersistenceController.shared
+    @State private var navigationPath = NavigationPath()
+    private let repository = TaskRepository()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            MainListModule.build(navigationPath: $navigationPath, repository: repository)
+                .preferredColorScheme(.dark)
         }
     }
 }
