@@ -46,6 +46,7 @@ struct TaskDetailsView: View {
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {
+                    presenter.save()
                     dismiss()
                 } label: {
                     HStack(spacing: 4) {
